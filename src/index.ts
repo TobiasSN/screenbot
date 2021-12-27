@@ -1,5 +1,5 @@
 import { Client, Intents, Permissions, MessageAttachment } from "discord.js";
-import puppeteer = require("puppeteer");
+import * as puppeteer from "puppeteer";
 
 const regEx = /(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/g;
 
