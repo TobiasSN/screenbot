@@ -3,7 +3,7 @@ import { REST } from "@discordjs/rest";
 export const isDev = process.env.NODE_ENV == "development";
 
 // Allow separate config for development and production.
-const config = isDev ? require("../dev-config.json") : require("firebase-functions").config();
+const config = isDev ? require("../dev-config.json") : require("firebase-functions").config().screenbot;
 
 export function assertConfig<T>(key: string): T {
 	if (config[key] == null) throw new Error(`Missing config: ${key}`);
