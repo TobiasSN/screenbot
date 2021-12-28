@@ -10,8 +10,8 @@ export function assertConfig<T>(key: string): T {
 	return config[key];
 }
 
-export const discordToken = assertConfig<string>("discordToken");
-export const discordKey = assertConfig<string>("discordKey");
-export const discordAppId = assertConfig<string>("discordAppId");
+export const discordToken = assertConfig<string>("discord_token");
+export const discordKey = assertConfig<string>("discord_key");
+export const discordAppId = assertConfig<string>("discord_app_id");
 
 export const discord = new REST({ version: "9" }).setToken(discordToken);

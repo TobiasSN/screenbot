@@ -10,10 +10,10 @@ Discord bot that sends a screenshot of any website that is linked to.
 3. Create a file called `dev-config.json` with the following contents:
    ```json
    {
-	   "discordToken": "<bot token here>",
-	   "discordKey": "<app public key here>",
-	   "discordAppId": "<app id here>",
-	   "devGuilds:" ["<test guild ids here, you can put more than one>"]
+	   "discord_token": "<bot token here>",
+	   "discord_key": "<app public key here>",
+	   "discord_app_id": "<app id here>",
+	   "dev_guilds:" ["<test guild ids here, you can put more than one>"]
    }
    ```
    You can get the first 3 from the dashboard of your Discord app.

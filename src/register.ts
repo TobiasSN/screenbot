@@ -11,7 +11,7 @@ const command = {
 	type: ApplicationCommandType.Message
 } as APIApplicationCommand;
 
-const guilds = assertConfig<string[]>("devGuilds");
+const guilds = assertConfig<string[]>("dev_guilds");
 
 (async () => {
 	const body = (process.argv.length >= 3 && process.argv[2] == "clear")
