@@ -5,4 +5,7 @@
 !/.yarn/sdks
 !/.yarn/cache
 
-.env
+dev-config.json
+
+firebase-debug.log
+.firebaserc

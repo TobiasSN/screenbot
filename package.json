@@ -1,19 +1,29 @@
 {
 	"name": "discord-url-screenshot-bot",
 	"packageManager": "yarn@3.1.1",
+	"main": "dist/index.js",
 	"engines": {
 		"node": "^16.13.0"
 	},
 	"scripts": {
-		"dev": "NODE_ENV=development nodemon --exec ts-node src/index.ts"
+		"dev": "yarn build:watch & NODE_ENV=development firebase serve --only functions",
+		"dev:register": "NODE_ENV=development ts-node src/register.ts",
+		"build:watch": "tsc --watch"
 	},
 	"dependencies": {
-		"discord.js": "^13.4.0",
+		"@discordjs/rest": "^0.2.0-canary.0",
 		"dotenv": "^10.0.0",
-		"puppeteer": "^13.0.1"
+		"firebase-admin": "^10.0.1",
+		"firebase-functions": "^3.16.0",
+		"form-data": "^4.0.0",
+		"got": "^12.0.0",
+		"puppeteer": "^13.0.1",
+		"tweetnacl": "^1.0.3"
 	},
 	"devDependencies": {
 		"@types/node": "^16.11",
+		"discord-api-types": "^0.26.0",
+		"firebase-tools": "^10.0.1",
 		"nodemon": "^2.0.15",
 		"ts-node": "^10.4.0",
 		"typescript": "^4.5.4"
