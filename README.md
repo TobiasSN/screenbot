@@ -13,7 +13,7 @@ Discord bot that sends a screenshot of any website that is linked to.
 	   "discordToken": "<bot token here>",
 	   "discordKey": "<app public key here>",
 	   "discordAppId": "<app id here>",
-	   "devGuilds:" [/* IDs of test guilds as strings */]
+	   "devGuilds:" ["<test guild ids here, you can put more than one>"]
    }
    ```
    You can get the first 3 from the dashboard of your Discord app.
