@@ -9,3 +9,5 @@ dev-config.json
 
 firebase-debug.log
 .firebaserc
+
+/dist
