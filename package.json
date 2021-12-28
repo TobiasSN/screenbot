@@ -8,7 +8,9 @@
 	"scripts": {
 		"dev": "yarn build:watch & NODE_ENV=development firebase serve --only functions",
 		"dev:register": "NODE_ENV=development ts-node src/register.ts",
-		"build:watch": "tsc --watch"
+		"build": "tsc",
+		"build:watch": "tsc --watch",
+		"deploy": "firebase deploy --only functions"
 	},
 	"dependencies": {
 		"@discordjs/rest": "^0.2.0-canary.0",
