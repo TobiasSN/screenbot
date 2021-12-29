@@ -10,7 +10,8 @@
 		"dev:register": "NODE_ENV=development ts-node src/register.ts",
 		"build": "tsc",
 		"build:watch": "tsc --watch",
-		"deploy": "firebase deploy --only functions"
+		"deploy": "firebase deploy --only functions",
+		"register": "ts-node src/register.ts"
 	},
 	"dependencies": {
 		"@discordjs/rest": "^0.2.0-canary.0",
