@@ -1,17 +1,25 @@
+import { execFileSync } from "child_process";
+
+import { REST } from "@discordjs/rest";
 import {
 	APIApplicationCommand,
 	APIGuild,
 	ApplicationCommandType,
 	Routes
 } from "discord-api-types/v9";
-import { isDev, discord, discordAppId, assertConfig } from "./common";
+
+const isDev = process.env.NODE_ENV == "development";
 
 const command = {
 	name: isDev ? "Screenshot links (Dev)" : "Screenshot links",
 	type: ApplicationCommandType.Message
 } as APIApplicationCommand;
 
-const guilds = assertConfig<string[]>("dev_guilds");
+// The normal way of accessing the config isn't available here.
+const configString = execFileSync("firebase", ["functions:config:get", "--json"]).toString();
+const config = JSON.parse(configString).result.screenbot;
+
+const discord = new REST({ version: "9" }).setToken(config.discord_token);
 
 (async () => {
 	const body = (process.argv.length >= 3 && process.argv[2] == "clear")
@@ -19,15 +27,17 @@ const guilds = assertConfig<string[]>("dev_guilds");
 		: [command];
 
 	if (isDev) {
-		for (const guild of guilds) {
+		const devConfig = await import("../dev-config.json");
+
+		for (const guild of devConfig.guilds) {
 			await discord.put(
-				Routes.applicationGuildCommands(discordAppId, guild),
+				Routes.applicationGuildCommands(config.discord_app_id, guild),
 				{ body }
 			);
 		}
 	} else {
 		await discord.put(
-			Routes.applicationCommands(discordAppId),
+			Routes.applicationCommands(config.discord_app_id),
 			{ body }
 		);
 	}

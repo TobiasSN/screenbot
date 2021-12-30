@@ -1,17 +1,12 @@
 import { REST } from "@discordjs/rest";
+import * as functions from "firebase-functions";
 
 export const isDev = process.env.NODE_ENV == "development";
 
-// Allow separate config for development and production.
-const config = isDev ? require("../dev-config.json") : require("firebase-functions").config().screenbot;
+const config = functions.config();
 
-export function assertConfig<T>(key: string): T {
-	if (config[key] == null) throw new Error(`Missing config: ${key}`);
-	return config[key];
-}
-
-export const discordToken = assertConfig<string>("discord_token");
-export const discordKey = assertConfig<string>("discord_key");
-export const discordAppId = assertConfig<string>("discord_app_id");
+export const discordToken: string = config.discord_token;
+export const discordKey: string = config.discord_key;
+export const discordAppId: string = config.discord_app_id;
 
 export const discord = new REST({ version: "9" }).setToken(discordToken);
