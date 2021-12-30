@@ -2,9 +2,13 @@
 	"compilerOptions": {
 		"strict": true,
 		"skipLibCheck": true,
+		"resolveJsonModule": true,
 		"outDir": "dist"
 	},
 	"include": [
 		"src"
+	],
+	"exclude": [
+		"src/register.ts"
 	]
 }
